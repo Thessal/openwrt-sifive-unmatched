@@ -33,6 +33,11 @@ time: target/linux/prereq#0.60#0.31#0.86
  make[3] -C tools/flock compile
  make[3] -C tools/xz compile
  make[3] -C tools/sed compile
+...
+ make[3] -C toolchain/kernel-headers compile
+    ERROR: toolchain/kernel-headers failed to build.
+make -r world: build failed. Please re-run make with -j1 V=s or V=sc for a higher verbosity level to see what's going on
+make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 1
 ```
 
 ## Note
