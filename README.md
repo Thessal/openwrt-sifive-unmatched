@@ -62,6 +62,15 @@ wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.21.tar.xz
 shasum -a 256 linux-5.11.21.tar.xz 
 366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f  linux-5.11.21.tar.xz
 #PKG_SOURCE_URL:=https://cdn.kernel.org/pub/
+
+SHELL= flock /home/ubuntu/openwrt/tmp/.linux-5.11.22.tar.xz.flock -c '          /home/ubuntu/openwrt/scripts/download.pl "/home/ubuntu/openwrt/dl" "linux-5.11.22.tar.xz" "366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f" "" "@KERNEL/linux/kernel/v5.x"    '
++ curl -f --connect-timeout 20 --retry 5 --location --insecure https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.22.tar.xz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  112M  100  112M    0     0  3618k      0  0:00:31  0:00:31 --:--:-- 5305k
+Hash of the downloaded file does not match (file: 11027c6114eb916edbcc37897226fb6263b2931911d2d5093550473ce1a57600, requested: 366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f) - deleting download.
+
+go with 11027c6114eb916edbcc37897226fb6263b2931911d2d5093550473ce1a57600
 ```
 
 ## Note
