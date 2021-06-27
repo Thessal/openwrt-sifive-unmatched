@@ -54,6 +54,16 @@ make[1]: Leaving directory '/home/ubuntu/openwrt'
 make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 2
 ```
 
+```
+vim ./include/kernel-version.mk
+# LINUX_KERNEL_HASH-5.11.22 
+# shasum -a 256 of tar.gz of source files goes here
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.21.tar.xz
+shasum -a 256 linux-5.11.21.tar.xz 
+366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f  linux-5.11.21.tar.xz
+#PKG_SOURCE_URL:=https://cdn.kernel.org/pub/
+```
+
 ## Note
 ```
 git diff HEAD > ../patch.diff
