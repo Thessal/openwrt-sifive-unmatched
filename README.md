@@ -22,7 +22,7 @@ git apply diff.patch # untested
 make menuconfig
 # Select Target → RISC-V HiFive Unleashed / QEMU
 # Advanced configuration options → Toolchain options → C Library implementation, select Use glibc
-make
+make -j4
 ```
 
 ```
