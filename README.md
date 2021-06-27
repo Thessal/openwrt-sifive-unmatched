@@ -41,30 +41,6 @@ make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 1
 ```
 
 ```
-make -r world: build failed. Please re-run make with -j1 V=s or V=sc for a higher verbosity level to see what's going on
-make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 1
-ubuntu@ubuntu:~/openwrt$ make -j1 V=sc
-make[1]: Entering directory '/home/ubuntu/openwrt'
-make[2]: Entering directory '/home/ubuntu/openwrt'
-+ mkdir -p /home/ubuntu/openwrt/staging_dir/target-riscv64_riscv64_glibc
-+ cd /home/ubuntu/openwrt/staging_dir/target-riscv64_riscv64_glibc
-+ mkdir -p bin lib stamp usr/include usr/lib
-mkdir -p /home/ubuntu/openwrt/build_dir/target-riscv64_riscv64_glibc/stamp
-touch /home/ubuntu/openwrt/staging_dir/target-riscv64_riscv64_glibc/.prepared
-make[3]: Entering directory '/home/ubuntu/openwrt/toolchain/gdb'
-make[3]: Nothing to be done for 'compile'.
-make[3]: Leaving directory '/home/ubuntu/openwrt/toolchain/gdb'
-time: toolchain/gdb/compile#0.03#0.00#0.04
-make[3]: Entering directory '/home/ubuntu/openwrt/toolchain/binutils'
-make[3]: Nothing to be done for 'compile'.
-make[3]: Leaving directory '/home/ubuntu/openwrt/toolchain/binutils'
-time: toolchain/binutils/compile#0.03#0.00#0.05
-make[3]: Entering directory '/home/ubuntu/openwrt/toolchain/gcc/minimal'
-make[3]: Nothing to be done for 'compile'.
-make[3]: Leaving directory '/home/ubuntu/openwrt/toolchain/gcc/minimal'
-time: toolchain/gcc/minimal/compile#0.03#0.02#0.06
-make[3]: Entering directory '/home/ubuntu/openwrt/toolchain/kernel-headers'
-mkdir -p /home/ubuntu/openwrt/dl
 SHELL= flock /home/ubuntu/openwrt/tmp/.linux-5.11.22.tar.xz.flock -c '          /home/ubuntu/openwrt/scripts/download.pl "/home/ubuntu/openwrt/dl" "linux-5.11.22.tar.xz" "x" "" "@KERNEL/linux/kernel/v5.x"    '
 Cannot find appropriate hash command, ensure the provided hash is either a MD5 or SHA256 checksum.
 make[3]: *** [Makefile:113: /home/ubuntu/openwrt/dl/linux-5.11.22.tar.xz] Error 255
