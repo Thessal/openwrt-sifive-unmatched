@@ -27,78 +27,40 @@ make -j4
 
 ```
 ~/openwrt$ make 
-time: target/linux/prereq#0.60#0.31#0.86
- make[1] world
- make[2] tools/compile
- make[3] -C tools/flock compile
- make[3] -C tools/xz compile
- make[3] -C tools/sed compile
-...
- make[3] -C toolchain/kernel-headers compile
-    ERROR: toolchain/kernel-headers failed to build.
-make -r world: build failed. Please re-run make with -j1 V=s or V=sc for a higher verbosity level to see what's going on
-make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 1
 ```
 
 ```
 SHELL= flock /home/ubuntu/openwrt/tmp/.linux-5.11.22.tar.xz.flock -c '          /home/ubuntu/openwrt/scripts/download.pl "/home/ubuntu/openwrt/dl" "linux-5.11.22.tar.xz" "x" "" "@KERNEL/linux/kernel/v5.x"    '
 Cannot find appropriate hash command, ensure the provided hash is either a MD5 or SHA256 checksum.
-make[3]: *** [Makefile:113: /home/ubuntu/openwrt/dl/linux-5.11.22.tar.xz] Error 255
-make[3]: Leaving directory '/home/ubuntu/openwrt/toolchain/kernel-headers'
-time: toolchain/kernel-headers/compile#0.22#0.08#0.32
-    ERROR: toolchain/kernel-headers failed to build.
-make[2]: *** [toolchain/Makefile:97: toolchain/kernel-headers/compile] Error 1
-make[2]: Leaving directory '/home/ubuntu/openwrt'
-make[1]: *** [toolchain/Makefile:93: /home/ubuntu/openwrt/staging_dir/toolchain-riscv64_riscv64_gcc-8.4.0_glibc/stamp/.toolchain_compile] Error 2
-make[1]: Leaving directory '/home/ubuntu/openwrt'
-make: *** [/home/ubuntu/openwrt/include/toplevel.mk:230: world] Error 2
+
+-> vim ./include/kernel-version.mk
+LINUX_KERNEL_HASH-5.11.22 = 11027c6114eb916edbcc37897226fb6263b2931911d2d5093550473ce1a57600
 ```
 
-```
-vim ./include/kernel-version.mk
-# LINUX_KERNEL_HASH-5.11.22 
-# shasum -a 256 of tar.gz of source files goes here
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.21.tar.xz
-shasum -a 256 linux-5.11.21.tar.xz 
-366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f  linux-5.11.21.tar.xz
-#PKG_SOURCE_URL:=https://cdn.kernel.org/pub/
-
-SHELL= flock /home/ubuntu/openwrt/tmp/.linux-5.11.22.tar.xz.flock -c '          /home/ubuntu/openwrt/scripts/download.pl "/home/ubuntu/openwrt/dl" "linux-5.11.22.tar.xz" "366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f" "" "@KERNEL/linux/kernel/v5.x"    '
-+ curl -f --connect-timeout 20 --retry 5 --location --insecure https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.11.22.tar.xz
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100  112M  100  112M    0     0  3618k      0  0:00:31  0:00:31 --:--:-- 5305k
-Hash of the downloaded file does not match (file: 11027c6114eb916edbcc37897226fb6263b2931911d2d5093550473ce1a57600, requested: 366ba5bb00be28b604aac630c4f64301063892f27353b299177c396af0ad877f) - deleting download.
-
-go with 11027c6114eb916edbcc37897226fb6263b2931911d2d5093550473ce1a57600
-```
-
-getting library related problem
 ```
 gcc -Wp,-MMD,scripts/.extract-cert.d -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89  -O2 -I/home/ubuntu/openwrt/staging_dir/host/include  -Wall -Wmissing-prototypes -Wstrict-prototypes   -I/home/ubuntu/openwrt/staging_dir/host/include -I/home/ubuntu/openwrt/staging_dir/host/include    -o scripts/extract-cert scripts/extract-cert.c -L/home/ubuntu/openwrt/staging_dir/host/lib -L/home/ubuntu/openwrt/staging_dir/host/lib -lcrypto   
 /usr/bin/ld: /home/ubuntu/openwrt/staging_dir/host/lib/libcrypto.a(libcrypto_la-eng_all.o): in function `.L0 ':      
 eng_all.c:(.text+0x24): undefined reference to `pthread_once' 
 /usr/bin/ld: /home/ubuntu/openwrt/staging_dir/host/lib/libcrypto.a(libcrypto_la-err.o): in function `.L0 ':    
-err.c:(.text+0x9b8): undefined reference to `pthread_once'  
-/usr/bin/ld: /home/ubuntu/openwrt/staging_dir/host/lib/libcrypto.a(libcrypto_la-err_all.o): in function `ERR_load_crypto_strings_internal':   
-err_all.c:(.text+0x88): undefined reference to `pthread_once'            
 
-/usr/bin/ld: /home/ubuntu/openwrt/staging_dir/host/lib/libcrypto.a(libcrypto_la-c_all.o): in function `.L0 ':    
-c_all.c:(.text+0x794): undefined reference to `pthread_once'            
-/usr/bin/ld: c_all.c:(.text+0x7a8): undefined reference to `pthread_once'    
-
-/usr/bin/ld: /home/ubuntu/openwrt/staging_dir/host/lib/libcrypto.a(libcrypto_la-crypto_init.o):crypto_init.c:(.text+0x4c): more undefined references to `pthread_once' follow 
-collect2: error: ld returned 1 exit status          
-...
-```
-
-
-```
-vim build_dir/target-riscv64_riscv64_glibc/linux-riscv64/linux-5.11.22/scripts/Makefile
+-> vim build_dir/target-riscv64_riscv64_glibc/linux-riscv64/linux-5.11.22/scripts/Makefile
 HOSTLDLIBS_extract-cert = $(CRYPTO_LIBS) -lpthread
 ```
 
-Building time again...!
+```
+/home/ubuntu/openwrt/staging_dir/host/bin/fakeroot /home/ubuntu/openwrt/scripts/ipkg-build -m "" /home/ubuntu/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc /home/ubuntu/openwrt/bin/targets/riscv64/generic-glibc/packages
+mkdir: cannot create directory '/home/ubuntu/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622457': Invalid argument
+
+-> vim /home/ubuntu/openwrt/scripts/ipkg-build
+mkdir -p $tmp_dir
+
+still getting errors...
+
+-> Runnning it manually
+pushd ~/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc
+/usr/bin/tar -X ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/tarX --format=gnu --sort=name -cpf - --mtime="Mon Jun 28 19:44:47 UTC 2021" . | /usr/bin/gzip -n - > ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.tar.gz
+popd
+```
 
 ## Note
 ```
