@@ -54,12 +54,24 @@ mkdir: cannot create directory '/home/ubuntu/openwrt/bin/targets/riscv64/generic
 -> vim /home/ubuntu/openwrt/scripts/ipkg-build
 mkdir -p $tmp_dir
 
-still getting errors...
+/home/ubuntu/openwrt/staging_dir/host/bin/tar: -: Cannot open: Invalid argument
 
--> Runnning it manually
-pushd ~/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc
-/usr/bin/tar -X ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/tarX --format=gnu --sort=name -cpf - --mtime="Mon Jun 28 19:44:47 UTC 2021" . | /usr/bin/gzip -n - > ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.tar.gz
-popd
+maybe stdout problem related to fakeroot?
+set -x in ipkg-build
+-> vim /home/ubuntu/openwrt/scripts/ipkg-build
+# $TAR -X $tmp_dir/tarX --format=gnu --sort=name -cpf - --mtime="$TIMESTAMP" . | $GZIP -n - > $tmp_dir/data.tar.gz
+$TAR -X $tmp_dir/tarX --format=gnu --sort=name -cpf $tmp_dir/data.tar --mtime="$TIMESTAMP" . 
+$GZIP -n $tmp_dir/data.tar
+
+# test:
+# pushd ~/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc
+## /home/ubuntu/openwrt/staging_dir/host/bin/tar -X ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/tarX --format=gnu --sort=name -cpf - --mtime="Mon Jun 28 19:44:47 UTC 2021" . | /usr/bin/gzip -n - > ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.tar.gz
+# /home/ubuntu/openwrt/staging_dir/host/bin/tar -X ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/tarX --format=gnu --sort=name -cpf ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.tar --mtime="Mon Jun 28 19:44:47 UTC 2021" . 
+# /usr/bin/gzip -n ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.tar
+# ls  /home/ubuntu/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/ -lhart
+# rm ~/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622634/data.*
+# popd
+
 ```
 
 ## Note
