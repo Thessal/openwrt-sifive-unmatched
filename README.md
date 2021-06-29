@@ -51,17 +51,22 @@ HOSTLDLIBS_extract-cert = $(CRYPTO_LIBS) -lpthread
 /home/ubuntu/openwrt/staging_dir/host/bin/fakeroot /home/ubuntu/openwrt/scripts/ipkg-build -m "" /home/ubuntu/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc /home/ubuntu/openwrt/bin/targets/riscv64/generic-glibc/packages
 mkdir: cannot create directory '/home/ubuntu/openwrt/bin/targets/riscv64/generic-glibc/packages/IPKG_BUILD.622457': Invalid argument
 
--> vim /home/ubuntu/openwrt/scripts/ipkg-build
-mkdir -p $tmp_dir
+libfakeroot requires patch.
+see : https://salsa.debian.org/clint/fakeroot/-/commit/57731fb5071b86d70d5a3e207addaabdde23111e
 
-/home/ubuntu/openwrt/staging_dir/host/bin/tar: -: Cannot open: Invalid argument
+vim ./build_dir/host/fakeroot-1.25.3/libfakeroot.c 
 
-maybe stdout problem related to fakeroot?
-set -x in ipkg-build
--> vim /home/ubuntu/openwrt/scripts/ipkg-build
-# $TAR -X $tmp_dir/tarX --format=gnu --sort=name -cpf - --mtime="$TIMESTAMP" . | $GZIP -n - > $tmp_dir/data.tar.gz
-$TAR -X $tmp_dir/tarX --format=gnu --sort=name -cpf $tmp_dir/data.tar --mtime="$TIMESTAMP" . 
-$GZIP -n $tmp_dir/data.tar
+#ifndef _STAT_VER
+ #if defined (__aarch64__)
+  #define _STAT_VER 0
+ #elif defined (__riscv) && __riscv_xlen==64
+  #define _STAT_VER 0
+ #elif defined (__x86_64__)
+  #define _STAT_VER 1
+ #else
+  #define _STAT_VER 3
+ #endif
+#endif
 
 # test:
 # pushd ~/openwrt/build_dir/target-riscv64_riscv64_glibc/toolchain/ipkg-riscv64_riscv64/libgcc
