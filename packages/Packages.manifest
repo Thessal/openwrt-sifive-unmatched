@@ -1,0 +1,329 @@
+Package: base-files
+Version: 1427-r16207-e73b1bc28b
+Depends: libc, librt, libpthread, netifd, jsonfilter, usign, openwrt-keyring, fstools, fwtool
+Source: package/base-files
+SourceName: base-files
+License: GPL-2.0
+Section: base
+SourceDateEpoch: 1624668832
+Architecture: riscv64_riscv64
+Installed-Size: 42179
+Filename: base-files_1427-r16207-e73b1bc28b_riscv64_riscv64.ipk
+Size: 43215
+SHA256sum: 6d6b2f71949e7981b937b30be9b50aa1d7d01039ac629eb6fbe3d9c3b2e68030
+Description:  This package contains a base filesystem and system scripts for OpenWrt.
+
+Package: dropbear
+Version: 2020.81-2
+Depends: libc, librt, libpthread
+Alternatives: 100:/usr/bin/scp:/usr/sbin/dropbear, 100:/usr/bin/ssh:/usr/sbin/dropbear
+Source: package/network/services/dropbear
+SourceName: dropbear
+License: MIT
+LicenseFiles: LICENSE libtomcrypt/LICENSE libtommath/LICENSE
+Section: net
+SourceDateEpoch: 1607690904
+CPE-ID: cpe:/a:matt_johnston:dropbear_ssh_server
+Architecture: riscv64_riscv64
+Installed-Size: 93656
+Filename: dropbear_2020.81-2_riscv64_riscv64.ipk
+Size: 94569
+SHA256sum: 172a06a5fc7240b471f24bff2a321b30bf543aca77c0a109ee20ced935143c71
+Description:  A small SSH2 server/client designed for small memory environments.
+
+Package: fstools
+Version: 2021-01-04-c53b1882-1
+Depends: libc, librt, libpthread, ubox
+Source: package/system/fstools
+SourceName: fstools
+License: GPL-2.0
+Section: base
+SourceDateEpoch: 1609794455
+Maintainer: John Crispin <john@phrozen.org>
+Architecture: riscv64_riscv64
+Installed-Size: 16792
+Filename: fstools_2021-01-04-c53b1882-1_riscv64_riscv64.ipk
+Size: 17550
+SHA256sum: b22a7c3b3eb82a5015c9eeb844a45a718c4772ac0d178aa60b76dd46ef5b323d
+Description:  OpenWrt filesystem tools
+
+Package: fwtool
+Version: 2019-11-12-8f7fe925-1
+Depends: libc, librt, libpthread
+Source: package/system/fwtool
+SourceName: fwtool
+License: GPL-2.0
+Section: utils
+SourceDateEpoch: 1573768411
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 4692
+Filename: fwtool_2019-11-12-8f7fe925-1_riscv64_riscv64.ipk
+Size: 5472
+SHA256sum: 358b6979aef700074fa94b56ccd5575d66cdf8ff427ccff4f8d101f520bd6888
+Description:  Utility for appending and extracting firmware metadata and signatures
+
+Package: jshn
+Version: 2021-05-16-b14c4688-2
+Depends: libc, librt, libpthread, libjson-c5, libubox20210516, libblobmsg-json20210516
+Source: package/libs/libubox
+SourceName: jshn
+License: ISC
+Section: utils
+SourceDateEpoch: 1623621733
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 7333
+Filename: jshn_2021-05-16-b14c4688-2_riscv64_riscv64.ipk
+Size: 8137
+SHA256sum: 3df8d0dc6efa54176b929c01d20dcec5da68b8af7b9dd946541dee76ab71cc6f
+Description:  Library for parsing and generating JSON from shell scripts
+
+Package: libblobmsg-json20210516
+Version: 2021-05-16-b14c4688-2
+Depends: libc, librt, libpthread, libjson-c5, libubox20210516
+Provides: libblobmsg-json
+Source: package/libs/libubox
+SourceName: libblobmsg-json
+License: ISC
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 20210516
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 4062
+Filename: libblobmsg-json20210516_2021-05-16-b14c4688-2_riscv64_riscv64.ipk
+Size: 4829
+SHA256sum: 6972e6470ce419326f5595057f456f85f96e5a3369243b2e2db85427336908a6
+Description:  blobmsg <-> json conversion library
+
+Package: libgcc1
+Version: 8.4.0-3
+Provides: libgcc
+Source: package/libs/toolchain
+SourceName: libgcc
+License: GPL-3.0-with-GCC-exception
+Section: libs
+SourceDateEpoch: 1608660710
+ABIVersion: 1
+Status: unknown hold not-installed
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 36393
+Filename: libgcc1_8.4.0-3_riscv64_riscv64.ipk
+Size: 37092
+SHA256sum: 1bb92a5230c312f74e94e255775d6220dca163a4fd8c41cf83fe12765ecc8c2d
+Description:  GCC support library
+
+Package: libjson-c5
+Version: 0.15-2
+Depends: libc, librt, libpthread
+Provides: libjson-c
+Source: package/libs/libjson-c
+SourceName: libjson-c
+License: MIT
+LicenseFiles: COPYING
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 5
+CPE-ID: cpe:/a:json-c_project:json-c
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 22846
+Filename: libjson-c5_0.15-2_riscv64_riscv64.ipk
+Size: 23653
+SHA256sum: 5bd6a7c8bc3b2e24fc6e80507131cdf38c299884a2805fd51862b549b03791e0
+Description:  This package contains a library for javascript object notation backends.
+
+Package: libjson-script20210516
+Version: 2021-05-16-b14c4688-2
+Depends: libc, librt, libpthread, libubox20210516
+Provides: libjson-script
+Source: package/libs/libubox
+SourceName: libjson-script
+License: ISC
+Section: utils
+SourceDateEpoch: 1623621733
+ABIVersion: 20210516
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 4768
+Filename: libjson-script20210516_2021-05-16-b14c4688-2_riscv64_riscv64.ipk
+Size: 5536
+SHA256sum: 11ba3a88dc48598260312e9cb1dac00c2da9fb3fd006a27d72ba73eb327d7117
+Description:  Minimalistic JSON based scripting engine
+
+Package: libnl-tiny1
+Version: 2020-08-05-c291088f-2
+Depends: libc, librt, libpthread
+Provides: libnl-tiny
+Source: package/libs/libnl-tiny
+SourceName: libnl-tiny
+License: LGPL-2.1
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 1
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 13081
+Filename: libnl-tiny1_2020-08-05-c291088f-2_riscv64_riscv64.ipk
+Size: 13881
+SHA256sum: 7eb85b0e3d22c379d6cf760d09deba6362e3ca582fda118fc8ff52f70929d5c5
+Description:  This package contains a stripped down version of libnl
+
+Package: libpthread
+Version: 2.33-3
+Depends: libgcc1
+Source: package/libs/toolchain
+SourceName: libpthread
+License: GPL-3.0-with-GCC-exception
+Section: libs
+SourceDateEpoch: 1608660710
+Status: unknown hold not-installed
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 38518
+Filename: libpthread_2.33-3_riscv64_riscv64.ipk
+Size: 39302
+SHA256sum: b1a8a8821a29ed5d89c97fed842be5eded2a80ed42de1cf395c4f0872eccc1a3
+Description:  POSIX thread library
+
+Package: librt
+Version: 2.33-3
+Depends: libpthread
+Source: package/libs/toolchain
+SourceName: librt
+License: GPL-3.0-with-GCC-exception
+Section: libs
+SourceDateEpoch: 1608660710
+Status: unknown hold not-installed
+Essential: yes
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 10844
+Filename: librt_2.33-3_riscv64_riscv64.ipk
+Size: 11625
+SHA256sum: bba9bdbeac1781557eef3e4320ca55ffee768c1b3b87914c9f70831084c73cfc
+Description:  POSIX.1b RealTime extension library
+
+Package: libubox20210516
+Version: 2021-05-16-b14c4688-2
+Depends: libc, librt, libpthread
+Provides: libubox
+Source: package/libs/libubox
+SourceName: libubox
+License: ISC
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 20210516
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 19831
+Filename: libubox20210516_2021-05-16-b14c4688-2_riscv64_riscv64.ipk
+Size: 20554
+SHA256sum: d172399da66495c0c718b6ed922d307494ff84a5cc9b48214b22cdcba9c47ef9
+Description:  Basic utility library
+
+Package: libubus20210603
+Version: 2021-06-03-a8cf6782-2
+Depends: libc, librt, libpthread, libubox20210516
+Provides: libubus
+Source: package/system/ubus
+SourceName: libubus
+License: LGPL-2.1
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 20210603
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 9489
+Filename: libubus20210603_2021-06-03-a8cf6782-2_riscv64_riscv64.ipk
+Size: 10269
+SHA256sum: 8ad0596f9433da95ee1bc8e199967a89a39bc2a8289c9d7c73cf6a16b10168ba
+Description:  OpenWrt RPC client library
+
+Package: libuci20130104
+Version: 2020-10-06-52bbc99f-5
+Depends: libc, librt, libpthread, libubox20210516
+Provides: libuci
+Source: package/system/uci
+SourceName: libuci
+License: LGPL-2.1
+Section: libs
+SourceDateEpoch: 1623621733
+ABIVersion: 20130104
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 15107
+Filename: libuci20130104_2020-10-06-52bbc99f-5_riscv64_riscv64.ipk
+Size: 15848
+SHA256sum: a96dd1a0e123259afaee307cbdd05edc209e5134fa93e12e71d14c410bbe6061
+Description:  C library for the Unified Configuration Interface (UCI)
+
+Package: mtd
+Version: 26
+Depends: libc, librt, libpthread, libubox20210516
+Source: package/system/mtd
+SourceName: mtd
+License: GPL-2.0+
+Section: utils
+SourceDateEpoch: 1598818715
+Architecture: riscv64_riscv64
+Installed-Size: 10304
+Filename: mtd_26_riscv64_riscv64.ipk
+Size: 11092
+SHA256sum: 106071d3a47025666f2f4c5db566a5a37d6cb87af0864fdfbe66a2ac45439075
+Description:  This package contains an utility useful to upgrade from other firmware or 
+ older OpenWrt releases.
+
+Package: ubus
+Version: 2021-06-03-a8cf6782-2
+Depends: libc, librt, libpthread, libubus20210603, libblobmsg-json20210516, ubusd
+Source: package/system/ubus
+SourceName: ubus
+License: LGPL-2.1
+Section: base
+SourceDateEpoch: 1623621733
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 6117
+Filename: ubus_2021-06-03-a8cf6782-2_riscv64_riscv64.ipk
+Size: 6886
+SHA256sum: 9e8a6f758ff93de46a8bcf0850b6f6adcdf2265b5848b4c5b6fa41e63b6c0591
+Description:  OpenWrt RPC client utility
+
+Package: ubusd
+Version: 2021-06-03-a8cf6782-2
+Depends: libc, librt, libpthread, libubox20210516, libblobmsg-json20210516
+Source: package/system/ubus
+SourceName: ubusd
+License: LGPL-2.1
+Section: base
+Require-User: ubus=81:ubus=81
+SourceDateEpoch: 1623621733
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 11599
+Filename: ubusd_2021-06-03-a8cf6782-2_riscv64_riscv64.ipk
+Size: 12380
+SHA256sum: a6ba57b09cd69d694b5f017caaa7c1d4765466d889503d4d390d535a7b20c62a
+Description:  OpenWrt RPC daemon
+
+Package: uci
+Version: 2020-10-06-52bbc99f-5
+Depends: libc, librt, libpthread, libuci20130104
+Source: package/system/uci
+SourceName: uci
+License: LGPL-2.1
+Section: base
+SourceDateEpoch: 1623621733
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: riscv64_riscv64
+Installed-Size: 7657
+Filename: uci_2020-10-06-52bbc99f-5_riscv64_riscv64.ipk
+Size: 8448
+SHA256sum: afb9f93b4f75f487f030ee6fc90059dae1fdd91f439e6223f69d19eb4bf12a37
+Description:  Utility for the Unified Configuration Interface (UCI)
+
